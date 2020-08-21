@@ -1,8 +1,6 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <RF24.h>
-
-
  
 #define pulso 7  //define la salida por donde se manda el pulso como 9
 #define rebote 6 //define la salida por donde se recibe el rebote como 10
@@ -20,7 +18,7 @@ RF24 radio(8, 9);
 
 void setup()
 {
-  Serial.begin(9600);  //inicializa el puerto serie<
+  // Serial.begin(9600);  //inicializa el puerto serie<
   pinMode(pulso, OUTPUT); //Declaramos el pin 9 como salida (pulso ultrasonido)
   pinMode(rebote, INPUT); //Declaramos el pin 8 como entrada (recepción del pulso)
 
@@ -49,14 +47,14 @@ void loop()
   if(distancia<=15){
     const char commandToOpen[]="1";
     radio.write(&commandToOpen, sizeof(commandToOpen));
-     Serial.println("Lectura");
+    //  Serial.println("Lectura");
     //  Serial.println(handWashMode);
     delay(100);
   }   
    /*Monitorización en centímetros por el monitor serial*/
-  Serial.print("Distancia: ");
-  Serial.print(distancia);
-  Serial.println(" cm");
+  // Serial.print("Distancia: ");
+  // Serial.print(distancia);
+  // Serial.println(" cm");
   delay(1000);
 }
  
